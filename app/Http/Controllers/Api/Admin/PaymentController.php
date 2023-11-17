@@ -22,6 +22,8 @@ class PaymentController extends Controller
     {
         $payment = Payment::create($request->validated());
 
+        $payment->transaction->updateStatus();
+
         return JsonResource::make($payment);
     }
 
@@ -34,12 +36,16 @@ class PaymentController extends Controller
     {
         $payment->update($request->validated());
 
+        $payment->transaction->updateStatus();
+
         return JsonResource::make($payment);
     }
 
     public function destroy(Payment $payment): Response
     {
         $payment->delete();
+
+        $payment->transaction->updateStatus();
 
         return response()->noContent();
     }

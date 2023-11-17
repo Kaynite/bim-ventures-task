@@ -23,9 +23,11 @@ class TransactionController extends Controller
 
     public function store(TransactionRequest $request): JsonResource
     {
-        return JsonResource::make(
-            Transaction::create($request->validated())
-        );
+        $transaction = Transaction::create($request->validated());
+
+        $transaction->updateStatus();
+
+        return JsonResource::make($transaction);
     }
 
     public function show(Transaction $transaction): JsonResource
@@ -38,6 +40,8 @@ class TransactionController extends Controller
     public function update(TransactionRequest $request, Transaction $transaction): JsonResource
     {
         $transaction->update($request->validated());
+
+        $transaction->updateStatus();
 
         return JsonResource::make($transaction);
     }

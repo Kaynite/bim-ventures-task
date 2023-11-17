@@ -26,7 +26,7 @@ class TransactionRequest extends FormRequest
             'due_date' => ['required', 'date'],
             'vat' => ['required', 'between:0,100'],
             'is_vat_inclusive' => ['required', 'boolean'],
-            'status' => ['required', Rule::enum(TransactionStatus::class)],
+            // 'status' => ['required', Rule::enum(TransactionStatus::class)],
         ];
     }
 }

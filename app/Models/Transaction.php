@@ -48,4 +48,13 @@ class Transaction extends Model
     {
         return $this->hasMany(Payment::class);
     }
+
+    public function updateStatus(): void
+    {
+        $status = ($this->payments()->sum('amount') >= $this->amount)
+            ? TransactionStatus::Paid
+            : (now()->gt($this->due_date) ? TransactionStatus::Overdue : TransactionStatus::Outstanding);
+
+        $this->update(['status' => $status]);
+    }
 }
