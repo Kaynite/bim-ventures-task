@@ -38,11 +38,11 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'customers',
         ],
         'customer' => [
             'driver' => 'sanctum',
-            'provider' => 'users',
+            'provider' => 'customers',
         ],
         'admin' => [
             'driver' => 'sanctum',
@@ -68,9 +68,9 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'customers' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Customer::class,
         ],
 
         'admins' => [

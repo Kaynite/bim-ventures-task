@@ -15,7 +15,7 @@ class Transaction extends Model
     protected $fillable = [
         'category_id',
         'sub_category_id',
-        'user_id',
+        'customer_id',
         'amount',
         'due_date',
         'vat',
@@ -31,7 +31,7 @@ class Transaction extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Customer::class);
     }
 
     public function category(): BelongsTo

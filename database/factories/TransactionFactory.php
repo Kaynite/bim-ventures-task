@@ -4,8 +4,8 @@ namespace Database\Factories;
 
 use App\Enums\TransactionStatus;
 use App\Models\Category;
+use App\Models\Customer;
 use App\Models\SubCategory;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
 
@@ -24,7 +24,7 @@ class TransactionFactory extends Factory
         return [
             'category_id' => Category::factory(),
             'sub_category_id' => SubCategory::factory(),
-            'user_id' => User::factory(),
+            'customer_id' => Customer::factory(),
             'amount' => fake()->numberBetween(100, 1000),
             'due_date' => fake()->dateTimeThisMonth(),
             'vat' => 14,

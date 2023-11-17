@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use App\Enums\TransactionStatus;
 use App\Models\Category;
+use App\Models\Customer;
 use App\Models\SubCategory;
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -21,7 +21,7 @@ class TransactionRequest extends FormRequest
         return [
             'category_id' => ['required', Rule::exists(Category::class, 'id')],
             'sub_category_id' => ['sometimes', 'nullable', Rule::exists(SubCategory::class, 'id')],
-            'user_id' => ['required', Rule::exists(User::class, 'id')],
+            'customer_id' => ['required', Rule::exists(Customer::class, 'id')],
             'amount' => ['required', 'numeric', 'min:0'],
             'due_date' => ['required', 'date'],
             'vat' => ['required', 'between:0,100'],
